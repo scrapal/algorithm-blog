@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "A8cde 的算法笔记"
+  name: "A8cde 的博客"
   tagline: 持续学习，保持思考
   actions:
     - theme: brand
