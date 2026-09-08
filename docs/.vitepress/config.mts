@@ -1,14 +1,106 @@
 import { defineConfig } from 'vitepress'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const docsDir = fileURLToPath(new URL('../', import.meta.url))
+
+function getReadingStats(source: string) {
+  let codeLines = 0
+  const text = source
+    .replace(/^---[\s\S]*?---\s*/, '')
+    .replace(/```[\s\S]*?```/g, block => {
+      codeLines += Math.max(0, block.split('\n').length - 2)
+      return ' '
+    })
+    .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .replace(/\$[^$]*\$/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[>#*_~|:-]/g, ' ')
+
+  const chinese = text.match(/[\u3400-\u4dbf\u4e00-\u9fff]/g)?.length ?? 0
+  const words = text
+    .replace(/[\u3400-\u4dbf\u4e00-\u9fff]/g, ' ')
+    .match(/[A-Za-z0-9]+(?:['_-][A-Za-z0-9]+)*/g)?.length ?? 0
+
+  return {
+    words: chinese + words,
+    minutes: Math.max(1, Math.ceil(chinese / 300 + words / 180 + codeLines / 18))
+  }
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/algorithm-blog/',
+  lang: 'zh-CN',
   title: "a8cde 的算法笔记",
   description: "记录算法学习与竞赛历程",
+  appearance: 'dark',
+  lastUpdated: true,
+  transformPageData(pageData) {
+    if (!pageData.filePath) return
+    const source = readFileSync(resolve(docsDir, pageData.filePath), 'utf-8')
+    pageData.frontmatter.readingStats = getReadingStats(source)
+  },
   markdown: {
-    math: true
+    math: true,
+    theme: {
+      light: 'github-light',
+      dark: 'dracula'
+    }
   },
   themeConfig: {
+    search: {
+      provider: 'local',
+      options: {
+        detailedView: true,
+        translations: {
+          button: {
+            buttonText: '搜索文章',
+            buttonAriaLabel: '搜索文章'
+          },
+          modal: {
+            displayDetails: '显示详细结果',
+            resetButtonTitle: '清除搜索',
+            backButtonTitle: '关闭搜索',
+            noResultsText: '没有找到相关内容',
+            footer: {
+              selectText: '选择',
+              selectKeyAriaLabel: '回车',
+              navigateText: '切换',
+              navigateUpKeyAriaLabel: '向上',
+              navigateDownKeyAriaLabel: '向下',
+              closeText: '关闭',
+              closeKeyAriaLabel: 'Esc'
+            }
+          }
+        }
+      }
+    },
+    outline: {
+      level: [2, 3],
+      label: '本页目录'
+    },
+    lastUpdated: {
+      text: '最后更新'
+    },
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    },
+    darkModeSwitchLabel: '切换主题',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
+    sidebarMenuLabel: '文章目录',
+    returnToTopLabel: '返回顶部',
+    navMenuLabel: '主导航',
+    mobileMenuLabel: '打开菜单',
+    extraMenuLabel: '更多选项',
+    skipToContentLabel: '跳转到正文',
+    externalLinkIcon: true,
     nav: [
       { text: '首页', link: '/' },
       {
@@ -117,6 +209,10 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/scrapal/algorithm-blog' }
-    ]
+    ],
+    footer: {
+      message: '持续学习，保持思考。',
+      copyright: 'Copyright © 2026 a8cde'
+    }
   }
 })
