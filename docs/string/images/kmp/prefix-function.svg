@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" role="img" aria-labelledby="title desc">
+  <title id="title">模式串 ababaca 的 nxt 数组</title>
+  <desc id="desc">展示模式串每个位置的字符与 nxt 值，并以第五个位置为例标出相同的前缀 ABA 和后缀 ABA。</desc>
+  <defs>
+    <style>
+      .title{font:700 30px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .label{font:600 21px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .cell{font:700 28px ui-monospace,SFMono-Regular,Consolas,monospace;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}
+      .small{font:500 18px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <rect width="1120" height="500" rx="24" fill="#f8fafc"/>
+  <text x="560" y="54" class="title" text-anchor="middle">模式串 ababaca 的 nxt 数组</text>
+
+  <text x="105" y="130" class="label">位置 i</text>
+  <text x="105" y="215" class="label">字符 p[i]</text>
+  <text x="105" y="300" class="label">nxt[i]</text>
+
+  <g stroke="#cbd5e1" stroke-width="2">
+    <rect x="210" y="92" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="314" y="92" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="418" y="92" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="522" y="92" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="626" y="92" width="94" height="62" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="3"/>
+    <rect x="730" y="92" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="834" y="92" width="94" height="62" rx="10" fill="#ffffff"/>
+
+    <rect x="210" y="177" width="94" height="62" rx="10" fill="#dcfce7" stroke="#22c55e"/>
+    <rect x="314" y="177" width="94" height="62" rx="10" fill="#dcfce7" stroke="#22c55e"/>
+    <rect x="418" y="177" width="94" height="62" rx="10" fill="#e0f2fe" stroke="#0ea5e9"/>
+    <rect x="522" y="177" width="94" height="62" rx="10" fill="#e0f2fe" stroke="#0ea5e9"/>
+    <rect x="626" y="177" width="94" height="62" rx="10" fill="#e0f2fe" stroke="#0ea5e9"/>
+    <rect x="730" y="177" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="834" y="177" width="94" height="62" rx="10" fill="#ffffff"/>
+
+    <rect x="210" y="262" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="314" y="262" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="418" y="262" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="522" y="262" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="626" y="262" width="94" height="62" rx="10" fill="#ffedd5" stroke="#f97316" stroke-width="3"/>
+    <rect x="730" y="262" width="94" height="62" rx="10" fill="#ffffff"/>
+    <rect x="834" y="262" width="94" height="62" rx="10" fill="#ffffff"/>
+  </g>
+
+  <g class="cell">
+    <text x="257" y="123">1</text><text x="361" y="123">2</text><text x="465" y="123">3</text>
+    <text x="569" y="123">4</text><text x="673" y="123">5</text><text x="777" y="123">6</text><text x="881" y="123">7</text>
+    <text x="257" y="208">a</text><text x="361" y="208">b</text><text x="465" y="208">a</text>
+    <text x="569" y="208">b</text><text x="673" y="208">a</text><text x="777" y="208">c</text><text x="881" y="208">a</text>
+    <text x="257" y="293">0</text><text x="361" y="293">0</text><text x="465" y="293">1</text>
+    <text x="569" y="293">2</text><text x="673" y="293">3</text><text x="777" y="293">0</text><text x="881" y="293">1</text>
+  </g>
+
+  <path d="M225 365 V348 H497 V365" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M433 404 V387 H705 V404" fill="none" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round"/>
+  <text x="361" y="373" class="small" text-anchor="middle" fill="#15803d">前缀 ABA</text>
+  <text x="569" y="412" class="small" text-anchor="middle" fill="#0369a1">p[1...5] 的后缀 ABA</text>
+  <text x="812" y="375" class="label" fill="#ea580c">因此 nxt[5]=3</text>
+  <text x="560" y="468" class="small" text-anchor="middle">nxt[i] 记录 p[1...i] 的最长相同真前后缀长度</text>
+</svg>

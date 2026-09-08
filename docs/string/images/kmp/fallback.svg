@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="470" viewBox="0 0 1120 470" role="img" aria-labelledby="title desc">
+  <title id="title">计算 nxt[6] 时的回退过程</title>
+  <desc id="desc">对模式串 ababaca 计算第六个位置的 nxt 值时，j 从 3 回退到 1，再回退到 0，最终得到 nxt[6] 等于 0。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title{font:700 30px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .head{font:700 23px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1e293b;text-anchor:middle}
+      .body{font:600 20px ui-monospace,SFMono-Regular,Consolas,monospace;fill:#334155;text-anchor:middle}
+      .note{font:500 18px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#475569;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="1120" height="470" rx="24" fill="#f8fafc"/>
+  <text x="560" y="56" class="title" text-anchor="middle">计算 p="ababaca" 的 nxt[6]</text>
+
+  <g>
+    <rect x="55" y="115" width="270" height="205" rx="18" fill="#ffffff" stroke="#ef4444" stroke-width="3"/>
+    <text x="190" y="158" class="head">第一次尝试：j=3</text>
+    <text x="190" y="210" class="body">p[4]=b</text>
+    <text x="190" y="248" class="body" fill="#dc2626">p[6]=c</text>
+    <text x="190" y="291" class="note" fill="#dc2626">失配</text>
+  </g>
+
+  <g>
+    <rect x="425" y="115" width="270" height="205" rx="18" fill="#ffffff" stroke="#ef4444" stroke-width="3"/>
+    <text x="560" y="158" class="head">第二次尝试：j=1</text>
+    <text x="560" y="210" class="body">p[2]=b</text>
+    <text x="560" y="248" class="body" fill="#dc2626">p[6]=c</text>
+    <text x="560" y="291" class="note" fill="#dc2626">仍然失配</text>
+  </g>
+
+  <g>
+    <rect x="795" y="115" width="270" height="205" rx="18" fill="#ffffff" stroke="#ef4444" stroke-width="3"/>
+    <text x="930" y="158" class="head">最后尝试：j=0</text>
+    <text x="930" y="210" class="body">p[1]=a</text>
+    <text x="930" y="248" class="body" fill="#dc2626">p[6]=c</text>
+    <text x="930" y="291" class="note" fill="#dc2626">仍然失配</text>
+  </g>
+
+  <line x1="330" y1="218" x2="410" y2="218" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="370" y="194" class="note">j=nxt[3]=1</text>
+  <line x1="700" y1="218" x2="780" y2="218" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="740" y="194" class="note">j=nxt[1]=0</text>
+
+  <rect x="365" y="365" width="390" height="66" rx="16" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+  <text x="560" y="407" class="head" fill="#1d4ed8">没有可延长的前后缀，nxt[6]=0</text>
+</svg>

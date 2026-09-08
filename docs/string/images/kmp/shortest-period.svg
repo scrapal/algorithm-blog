@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="530" viewBox="0 0 1120 530" role="img" aria-labelledby="title desc">
+  <title id="title">利用最长相同真前后缀求最短循环节</title>
+  <desc id="desc">字符串 ababab 的最长相同真前后缀长度为 4，前缀向右移动 2 位与后缀对齐，因此最短循环节长度为 2。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#7c3aed"/>
+    </marker>
+    <style>
+      .title{font:700 30px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .label{font:600 21px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .char{font:700 28px ui-monospace,SFMono-Regular,Consolas,monospace;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}
+      .note{font:500 19px Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#475569}
+      .formula{font:700 25px ui-monospace,SFMono-Regular,Consolas,monospace;fill:#1d4ed8;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="1120" height="530" rx="24" fill="#f8fafc"/>
+  <text x="560" y="54" class="title" text-anchor="middle">最长相同真前后缀与最短循环节</text>
+
+  <text x="55" y="141" class="label">原字符串</text>
+  <g>
+    <rect x="240" y="102" width="82" height="62" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+    <rect x="332" y="102" width="82" height="62" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+    <rect x="424" y="102" width="82" height="62" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+    <rect x="516" y="102" width="82" height="62" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+    <rect x="608" y="102" width="82" height="62" rx="10" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+    <rect x="700" y="102" width="82" height="62" rx="10" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="281" y="133" class="char">a</text><text x="373" y="133" class="char">b</text>
+    <text x="465" y="133" class="char">a</text><text x="557" y="133" class="char">b</text>
+    <text x="649" y="133" class="char">a</text><text x="741" y="133" class="char">b</text>
+  </g>
+
+  <path d="M250 205 V187 H588 V205" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M434 246 V228 H772 V246" fill="none" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round"/>
+  <text x="419" y="213" class="note" text-anchor="middle" fill="#15803d">前缀 abab</text>
+  <text x="603" y="254" class="note" text-anchor="middle" fill="#0369a1">后缀 abab</text>
+
+  <line x1="300" y1="302" x2="464" y2="302" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="382" y="286" class="note" text-anchor="middle" fill="#6d28d9">向右移动 2 位</text>
+
+  <text x="55" y="386" class="label">移动前缀</text>
+  <g>
+    <rect x="424" y="347" width="82" height="62" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+    <rect x="516" y="347" width="82" height="62" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+    <rect x="608" y="347" width="82" height="62" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+    <rect x="700" y="347" width="82" height="62" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+    <text x="465" y="378" class="char">a</text><text x="557" y="378" class="char">b</text>
+    <text x="649" y="378" class="char">a</text><text x="741" y="378" class="char">b</text>
+  </g>
+  <text x="845" y="385" class="note">与原后缀完全重合</text>
+
+  <rect x="275" y="454" width="570" height="52" rx="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="488" class="formula">T = n - nxt[n] = 6 - 4 = 2</text>
+</svg>
