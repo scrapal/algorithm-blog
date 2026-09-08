@@ -129,3 +129,29 @@
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
 
+/**
+ * Component: Comments
+ * -------------------------------------------------------------------------- */
+
+.giscus-comments {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.giscus-comments h2 {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+.giscus-comments__hint {
+  margin: 8px 0 20px;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+}
+
+.giscus-comments__widget {
+  min-height: 150px;
+}
