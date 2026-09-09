@@ -269,6 +269,7 @@ html.dark body {
 }
 
 .vp-doc blockquote {
+  padding: 0.9rem 1.15rem;
   border-left: 3px solid var(--vp-c-brand-1);
   border-radius: 0 0.55rem 0.55rem 0;
   background: var(--vp-c-brand-soft);
