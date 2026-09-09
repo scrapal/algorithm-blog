@@ -46,7 +46,7 @@ function getReadingStats(source: string) {
 export default defineConfig({
   base: '/algorithm-blog/',
   lang: 'zh-CN',
-  title: "a8cde 的算法笔记",
+  title: "A8cde 的博客",
   description: defaultDescription,
   appearance: 'dark',
   lastUpdated: true,
@@ -65,7 +65,7 @@ export default defineConfig({
   transformHead({ page, pageData, title, description }) {
     const canonicalUrl = getPageUrl(page)
     const pageDescription = pageData.frontmatter.description || description || defaultDescription
-    const pageTitle = pageData.frontmatter.title || title || 'a8cde 的算法笔记'
+    const pageTitle = pageData.frontmatter.title || title || 'A8cde 的博客'
     const socialImage = pageData.frontmatter.image
       ? new URL(pageData.frontmatter.image, canonicalUrl).href
       : defaultSocialImage
@@ -74,7 +74,7 @@ export default defineConfig({
     return [
       ['link', { rel: 'canonical', href: canonicalUrl }],
       ['meta', { property: 'og:type', content: isArticle ? 'article' : 'website' }],
-      ['meta', { property: 'og:site_name', content: 'a8cde 的算法笔记' }],
+      ['meta', { property: 'og:site_name', content: 'A8cde 的博客' }],
       ['meta', { property: 'og:title', content: pageTitle }],
       ['meta', { property: 'og:description', content: pageDescription }],
       ['meta', { property: 'og:url', content: canonicalUrl }],

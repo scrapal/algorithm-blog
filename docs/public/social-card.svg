@@ -20,7 +20,7 @@
     <path d="M0 105h1200M0 210h1200M0 315h1200M0 420h1200M0 525h1200"/>
     <path d="M120 0v630M240 0v630M360 0v630M480 0v630M600 0v630M720 0v630M840 0v630M960 0v630M1080 0v630"/>
   </g>
-  <text x="96" y="260" fill="url(#title)" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif" font-size="78" font-weight="800">a8cde 的算法笔记</text>
+  <text x="96" y="260" fill="url(#title)" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif" font-size="78" font-weight="800">A8cde 的博客</text>
   <text x="100" y="340" fill="#edf5ff" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif" font-size="34">记录算法学习与竞赛历程</text>
   <rect x="100" y="410" width="210" height="54" rx="27" fill="#55e6ff" fill-opacity=".12" stroke="#55e6ff" stroke-opacity=".42"/>
   <text x="205" y="447" text-anchor="middle" fill="#55e6ff" font-family="Inter, sans-serif" font-size="22">ALGORITHM BLOG</text>
