@@ -6,10 +6,14 @@ import ArticleMeta from './ArticleMeta.vue'
 import ArticleActions from './ArticleActions.vue'
 import GiscusComments from './GiscusComments.vue'
 import ImageZoom from './ImageZoom.vue'
+import RecentPosts from './RecentPosts.vue'
 import './style.css'
 
 export default {
   extends: DefaultTheme,
+  enhanceApp({ app }) {
+    app.component('RecentPosts', RecentPosts)
+  },
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       'doc-before': () => h('div', { class: 'article-toolbar' }, [

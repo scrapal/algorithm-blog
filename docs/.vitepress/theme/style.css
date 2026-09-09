@@ -162,9 +162,14 @@ html.dark body {
   transform: translateY(-1px);
 }
 
+.recent-post-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .recent-post-card {
   display: block;
-  margin-top: 1rem;
   padding: 1.2rem 1.35rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 0.9rem;
