@@ -4,6 +4,16 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const docsDir = fileURLToPath(new URL('../', import.meta.url))
+const siteUrl = 'https://scrapal.github.io/algorithm-blog/'
+const defaultDescription = '记录算法学习与竞赛历程'
+const defaultSocialImage = `${siteUrl}social-card.svg`
+
+function getPageUrl(page: string) {
+  const route = page
+    .replace(/\.md$/, '.html')
+    .replace(/(^|\/)index\.html$/, '$1')
+  return new URL(route, siteUrl).href
+}
 
 function getReadingStats(source: string) {
   let codeLines = 0
@@ -37,16 +47,47 @@ export default defineConfig({
   base: '/algorithm-blog/',
   lang: 'zh-CN',
   title: "a8cde 的算法笔记",
-  description: "记录算法学习与竞赛历程",
+  description: defaultDescription,
   appearance: 'dark',
   lastUpdated: true,
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/algorithm-blog/favicon.svg' }],
+    ['meta', { name: 'theme-color', content: '#080d18' }]
+  ],
+  sitemap: {
+    hostname: siteUrl
+  },
   transformPageData(pageData) {
     if (!pageData.filePath) return
     const source = readFileSync(resolve(docsDir, pageData.filePath), 'utf-8')
     pageData.frontmatter.readingStats = getReadingStats(source)
   },
+  transformHead({ page, pageData, title, description }) {
+    const canonicalUrl = getPageUrl(page)
+    const pageDescription = pageData.frontmatter.description || description || defaultDescription
+    const pageTitle = pageData.frontmatter.title || title || 'a8cde 的算法笔记'
+    const socialImage = pageData.frontmatter.image
+      ? new URL(pageData.frontmatter.image, canonicalUrl).href
+      : defaultSocialImage
+    const isArticle = Boolean(pageData.relativePath) && !pageData.relativePath.endsWith('index.md')
+
+    return [
+      ['link', { rel: 'canonical', href: canonicalUrl }],
+      ['meta', { property: 'og:type', content: isArticle ? 'article' : 'website' }],
+      ['meta', { property: 'og:site_name', content: 'a8cde 的算法笔记' }],
+      ['meta', { property: 'og:title', content: pageTitle }],
+      ['meta', { property: 'og:description', content: pageDescription }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
+      ['meta', { property: 'og:image', content: socialImage }],
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:title', content: pageTitle }],
+      ['meta', { name: 'twitter:description', content: pageDescription }],
+      ['meta', { name: 'twitter:image', content: socialImage }]
+    ]
+  },
   markdown: {
     math: true,
+    lineNumbers: true,
     theme: {
       light: 'github-light',
       dark: 'dracula'

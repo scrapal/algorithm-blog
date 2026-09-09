@@ -3,15 +3,21 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import ArticleMeta from './ArticleMeta.vue'
+import ArticleActions from './ArticleActions.vue'
 import GiscusComments from './GiscusComments.vue'
+import ImageZoom from './ImageZoom.vue'
 import './style.css'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'doc-before': () => h(ArticleMeta),
-      'doc-after': () => h(GiscusComments)
+      'doc-before': () => h('div', { class: 'article-toolbar' }, [
+        h(ArticleMeta),
+        h(ArticleActions)
+      ]),
+      'doc-after': () => h(GiscusComments),
+      'layout-bottom': () => h(ImageZoom)
     })
   }
 } satisfies Theme

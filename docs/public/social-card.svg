@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#080d18"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    <linearGradient id="title" x1="150" y1="190" x2="820" y2="410" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a78bfa"/>
+      <stop offset="0.55" stop-color="#55e6ff"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(1010 120) rotate(135) scale(420 360)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55e6ff" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#55e6ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="36" fill="url(#glow)"/>
+  <g opacity=".12" stroke="#aebbd0">
+    <path d="M0 105h1200M0 210h1200M0 315h1200M0 420h1200M0 525h1200"/>
+    <path d="M120 0v630M240 0v630M360 0v630M480 0v630M600 0v630M720 0v630M840 0v630M960 0v630M1080 0v630"/>
+  </g>
+  <text x="96" y="260" fill="url(#title)" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif" font-size="78" font-weight="800">a8cde 的算法笔记</text>
+  <text x="100" y="340" fill="#edf5ff" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif" font-size="34">记录算法学习与竞赛历程</text>
+  <rect x="100" y="410" width="210" height="54" rx="27" fill="#55e6ff" fill-opacity=".12" stroke="#55e6ff" stroke-opacity=".42"/>
+  <text x="205" y="447" text-anchor="middle" fill="#55e6ff" font-family="Inter, sans-serif" font-size="22">ALGORITHM BLOG</text>
+  <path d="M1010 212 930 315l80 103M1090 212l80 103-80 103" fill="none" stroke="url(#title)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m1070 180-54 270" fill="none" stroke="#edf5ff" stroke-width="18" stroke-linecap="round"/>
+</svg>

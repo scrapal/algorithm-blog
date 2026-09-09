@@ -162,11 +162,20 @@ html.dark body {
   transform: translateY(-1px);
 }
 
+.article-toolbar {
+  display: flex;
+  min-height: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+
 .article-meta {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin: 0 0 1rem;
+  margin: 0;
   color: var(--vp-c-text-3);
   font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
@@ -188,6 +197,34 @@ html.dark body {
   height: 3px;
   border-radius: 50%;
   background: var(--vp-c-text-3);
+}
+
+.article-copy-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.55rem;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.article-copy-link:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.article-copy-link svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
 }
 
 .vp-doc {
@@ -264,10 +301,76 @@ html.dark body {
   max-width: 100%;
   height: auto;
   border-radius: 0.7rem;
+  cursor: zoom-in;
+}
+
+.vp-doc a img,
+.vp-doc img[data-no-zoom] {
+  cursor: pointer;
 }
 
 .dark .vp-doc img {
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.24);
+}
+
+.image-zoom {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(2, 6, 15, 0.88);
+  backdrop-filter: blur(10px);
+  cursor: zoom-out;
+}
+
+.image-zoom__image {
+  display: block;
+  max-width: min(96vw, 96rem);
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  cursor: default;
+  user-select: none;
+}
+
+.image-zoom__close {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(8, 13, 24, 0.72);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-zoom-enter-active,
+.image-zoom-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.image-zoom-enter-active .image-zoom__image,
+.image-zoom-leave-active .image-zoom__image {
+  transition: transform 0.2s ease;
+}
+
+.image-zoom-enter-from,
+.image-zoom-leave-to {
+  opacity: 0;
+}
+
+.image-zoom-enter-from .image-zoom__image,
+.image-zoom-leave-to .image-zoom__image {
+  transform: scale(0.96);
 }
 
 .VPLocalSearchBox .shell {
@@ -336,6 +439,22 @@ html.dark body {
   .article-meta {
     gap: 0.5rem;
     font-size: 0.78rem;
+  }
+
+  .article-toolbar {
+    align-items: flex-start;
+  }
+
+  .article-copy-link span {
+    display: none;
+  }
+
+  .article-copy-link {
+    padding: 0.4rem;
+  }
+
+  .image-zoom {
+    padding: 0.75rem;
   }
 
   .VPHomeHero .name {
