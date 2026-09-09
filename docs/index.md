@@ -57,8 +57,17 @@ features:
 
 ## 最近更新
 
-### [KMP 学习笔记](/string/kmp)
-
-`2026-09-09` · `字符串`
-
-从暴力字符串匹配开始，逐步理解 KMP 的核心思想、`nxt` 数组的构造与使用，并介绍最短循环节的求法。
+<a class="recent-post-card" href="./string/kmp">
+  <span class="recent-post-card__meta">
+    <span>字符串</span>
+    <time datetime="2026-09-09">2026-09-09</time>
+  </span>
+  <strong class="recent-post-card__title">
+    KMP 学习笔记
+    <span aria-hidden="true">→</span>
+  </strong>
+  <span class="recent-post-card__excerpt">
+    由于经常学了就忘，还是决定整理一下笔记，相信详细梳理之后应该就不会忘了。<br>
+    先来看一道题：给出两个字符串 s₁ 和 s₂，求出 s₂ 在 s₁ 中所有出现的位置……
+  </span>
+</a>
