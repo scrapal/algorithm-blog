@@ -9,18 +9,18 @@ interface Frame {
   message: string
 }
 
-const source = [...'ABABABA']
+const source = [...'AABABAB']
 const frames: Frame[] = [
   { input: -1, stack: [], match: 0, deleting: [], message: '准备从左到右扫描原串' },
   { input: 0, stack: [0], match: 1, deleting: [], message: '读入 A，模式串已经匹配 1 位' },
-  { input: 1, stack: [0, 1], match: 2, deleting: [], message: '读入 B，模式串已经匹配 2 位' },
-  { input: 2, stack: [0, 1, 2], match: 3, deleting: [0, 1, 2], message: '读入 A，栈顶匹配出 ABA' },
-  { input: 2, stack: [], match: 0, deleting: [], message: '删除 ABA，栈变空，恢复 j=0' },
-  { input: 3, stack: [3], match: 0, deleting: [], message: '读入 B，当前没有匹配字符' },
-  { input: 4, stack: [3, 4], match: 1, deleting: [], message: '读入 A，模式串已经匹配 1 位' },
-  { input: 5, stack: [3, 4, 5], match: 2, deleting: [], message: '读入 B，模式串已经匹配 2 位' },
-  { input: 6, stack: [3, 4, 5, 6], match: 3, deleting: [4, 5, 6], message: '读入 A，栈顶再次匹配出 ABA' },
-  { input: 6, stack: [3], match: 0, deleting: [], message: '删除 ABA，恢复剩余 B 保存的 j=0' }
+  { input: 1, stack: [0, 1], match: 1, deleting: [], message: '读入 A，失配回退后仍匹配 1 位' },
+  { input: 2, stack: [0, 1, 2], match: 2, deleting: [], message: '读入 B，模式串已经匹配 2 位' },
+  { input: 3, stack: [0, 1, 2, 3], match: 3, deleting: [1, 2, 3], message: '读入 A，栈顶匹配出 ABA' },
+  { input: 3, stack: [0], match: 1, deleting: [], message: '删除 ABA，恢复剩余 A 保存的 j=1' },
+  { input: 4, stack: [0, 4], match: 2, deleting: [], message: '读入 B，接着匹配到第 2 位' },
+  { input: 5, stack: [0, 4, 5], match: 3, deleting: [0, 4, 5], message: '读入 A，栈顶再次匹配出 ABA' },
+  { input: 5, stack: [], match: 0, deleting: [], message: '删除 ABA，栈变空，恢复 j=0' },
+  { input: 6, stack: [6], match: 0, deleting: [], message: '读入 B，当前没有匹配字符' }
 ]
 
 const step = ref(0)
@@ -73,7 +73,7 @@ onBeforeUnmount(stopTimer)
   <div class="kmp-censor" aria-label="KMP 删除模式串 ABA 的扫描动画">
     <div class="kmp-censor__header">
       <div>
-        <strong>原串 ABABABA</strong>
+        <strong>原串 AABABAB</strong>
         <span>模式串 ABA</span>
       </div>
       <div class="kmp-censor__controls">
